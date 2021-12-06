@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>아이디 찾기</title>
+</head>
+<body>
+      <form action="result.html" name="search">
+            <fieldset>
+                  <legend>아이디입력</legend>
+                  <p>
+                        <label for="id">아이디</label>
+                        <input type="text" name="input_id" id="input_id" autofocus>
+                        <button type="submit" onclick="check()">검색</button>
+                  </p>
+            </fieldset>
+      </form>
+      
+</body>
+<script>
+      function check(){
+        window.open("check_id.html", "", "width=600 height=400 left=0 top=0")
+      }
+    </script>
+</html>

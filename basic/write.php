@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입하기</title>
+    <style>
+        span{
+            color: red;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form action="insert.php" method="post" id="joinlist">
+        <fieldset>
+            <legend>회원가입 연습하기</legend>
+            <p>
+                <label for="user_nm">이름</label>
+                <input type="text" name="user_nm" id="user_nm" class="user_nm">
+                <br>
+                <span class="err_nm"></span>
+            </p>
+            <p>
+                <label for="user_id">아이디</label>
+                <input type="text" name="user_id" id="user_id" class="user_id" value="asdf">
+                <button type="button" name="btn" id="btn" class="btn" onclick="IDsearch()">아이디 중복확인</button>
+                <br>
+                <span class="err_id">* 아이디는 4~10글자만 입력할 수 있습니다.</span>
+            </p>
+            <p>
+                <label for="pass">비밀번호</label>
+                <input type="password" name="pass" id="pass" class="pass">
+                <br>
+                <span class="err_pass">* 비밀번호는 4~12글자만 입력할 수 있습니다.</span>
+                <br>
+                <label for="pass">비밀번호 확인</label>
+                <input type="password" name="repass" id="repass" class="repass">
+                <br>
+                <span class="err_repass"></span>
+            </p>
+            <p>
+                <label for="bday">생년월일</label>
+                <input type="text" name="bday" id="bday" class="bday">
+                <br>
+                <span>* ex) YYYYMMDD</span>
+            </p>
+            <p>
+                <label for="zip">우편번호</label>
+                <input type="text" name="zip" id="zip" class="zip">
+                <button type="button" name="btn" id="btn" class="btn" onclick="zipcode()">우편번호 찾기</button>
+            </p>
+            <p>
+                <label for="add01">기본주소</label>
+                <input type="text" name="add01" id="add01" class="add01">
+                <br>
+                <label for="add02">상세주소</label>
+                <input type="text" name="add02" id="add02" class="add02">
+            </p>
+            <p>
+                <label for="em">이메일</label>
+                <input type="text" name="emid" id="emid" class="emid"> @ 
+                <input type="text" name="emdm" id="emdm" class="emdm">
+                <select name="dm_sel" id="dm_sel" onchange="change()">
+                    <option value="naver.com">naver</option>
+                    <option value="gmail.com">gmail</option>
+                    <option value="daum.net">daum</option>
+                    <option value="nate.com">nate</option>
+                </select>
+            </p>
+            <p>
+                <label for="mobile">전화번호</label>
+                <input type="text" name="mobile" id="mobile" class="mobile">
+                <br>
+                <span class="err_mb">"-"없이 숫자만 입력</span>
+            </p>
+            <p>
+                <label for="agree">약관동의</label>
+                동의<input type="checkbox" name="agree" id="agree" class="agree">
+                비동의<input type="checkbox" name="agree" id="agree" class="agree">
+            </p>
+            <p class="btnwrap">
+                <button type="button" name="btn" id="btn" class="btn">이전으로</button>
+                <button type="submit" name="btn" id="btn" class="btn">가입하기</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+<script type="text/javascript">
+    function welcome(){
+        var nm = document.getElementById(".user_nm");
+        var uid = document.getElementById(".user_id");
+        var pw = document.getElementById(".pass");
+        var repw = document.getElementById(".repass");
+        var birth = documet.getElementById(".bday");
+        var code = document.getElementById(".zip");
+
+        //이름
+        if(nm.value == ""){
+            var er_msg = documet.querySelector(".err_nm");
+            er_msg.textContent = "이름을 입력해 주세요.";
+            nm.focus();
+            return false;
+        };
+
+        //아이디
+        if(uid.value == ""){
+            var er_msg = document.querySelector(".err_id");
+            er_msg.textContent = "아이디를 입력해 주세요.";
+            uid.focus();
+            return false;
+        };
+
+        var uid_len = uid.value.length;
+        if(uid_len < 4 || uid_len > 10){
+            var err_msg = document.querySelector(".err_id");
+            err_msg.textContent = "아이디는 최소 4글자, 최대 10글자 까지 입력할 수 있습니다.";
+            uid.focus();
+            return false;
+        };
+
+        //비밀번호
+        if(pw.value == ""){
+            var err_msg = document.querySelector(".err_pass");
+            err_msg.textContent = "비밀번호를 입력해 주세요.";
+            pw.focus();
+            return false;
+        };
+        var pw_len = pw.value.length;
+        if(pw_len < 4 || pw_len > 12){
+            var err_msg = document.querySelector(".err_pass");
+            err_msg.textContent = "비밀번호는 최대 4글자, 최대 12글자까지 입력할 수 있습니다."
+            pw.focus();
+            return false;
+        };
+
+        //비밀번호 확인
+        var(pw.value != repw.value){
+            var err_msg = document.querySelector(".err_repass");
+            err_msg.textContent = "비밀번호를 확인해 주세요.";
+            repw.focus();
+            return false;
+        };
+
+        //아이디 찾기
+
+    };
+
+    function change(){
+        var dm = document.getElementById("emdm");
+        var sel = document.getElementById("dm_sel");
+
+        var idx = dm_sel.options.selectedIndex;
+
+        var sel_txt = dm_sel.options[idx].value;
+        dm.value = sel_txt;
+    };
+
+    function IDsearch(){
+        window.open("searchid.html", "",  "width=600 height=400 left=0 top=0")
+    }
+
+    function zipcode(){
+        window.open("address_list.html", "",  "width=600 height=400 left=0 top=0")
+    }
+</script>
+</html>
