@@ -2,7 +2,7 @@
 
 // 이전 페이지에거 값 가져오기
 $u_id = $_POST["u_id"];
-$u_id = $_POST["pwd"];
+$pwd = $_POST["pwd"];
 
 echo "ID : ".$u_id." / PW : ".$pwd;
 
@@ -15,7 +15,7 @@ $sql = "select idx, u_name, u_id, pwd, from members where u_id='$u_id';";
 
 echo $sql;
 
-/* 쿼리 전송 */
+/* 쿼리 전송(연결 객체) */
 $result = mysqli_query($dbcon, $sql);
 
 // DB에서 결과값 가져오기
@@ -37,7 +37,22 @@ if($num){//아이디가 존재하지 않으면
             history.back();
         </script>
     ";
-}
+    exit;
+} else{ // 아이디가 존재하면
+
+        // DB에서 사용자 정보 가져오기
+        $array = mysqli_fetch_array($result);
+        $array["idx"];        
+        $array["u_name"];
+        $array["u_id"];
+        $array["pwd"];
+
+        //사용자가 입력한 비밀번호와 DB에 저장된 비밀번호가 일치하는지 확인
+        if($pwd == DB에 저장된 비밀번호){
+
+    };
+};
+
 
 
 /* DB연결 종료 */
