@@ -27,9 +27,9 @@ $num = mysqli_num_rows($result);
 /* 조건 처리 */
 if(!$num){ // 아이디가 존재하지 않으면
     // 메세지 출력 후 이전 페이지로 이동
-    echo "
+alert(\"일치하는 아이디가 없습니다.\");    echo "
         <script type=\"text/javascript\">
-            alert(\"일치하는 아이디가 없습니다.\");
+            
             history.back();
         </script>
     ";
