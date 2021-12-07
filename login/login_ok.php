@@ -42,15 +42,24 @@ if($num){//아이디가 존재하지 않으면
 
         // DB에서 사용자 정보 가져오기
         $array = mysqli_fetch_array($result);
-        $array["idx"];        
-        $array["u_name"];
-        $array["u_id"];
-        $array["pwd"];
+        //$g_idx = $array["idx"];        
+        //$g_u_name = $array["u_name"];
+        //$g_u_id = $array["u_id"];
+        $g_pwd = $array["pwd"];
 
-        //사용자가 입력한 비밀번호와 DB에 저장된 비밀번호가 일치하는지 확인
-        if($pwd == DB에 저장된 비밀번호){
+        //사용자가 입력한 비밀번호와 DB에 저장된 비밀번호가 일치하지 않는다면
+        if($pwd != $g_pwd){
+            echo "
+            <script type=\"text/javascript\">
+                alert(\"비밀번호가 일치하지 않습니다.\");
+                history.back();
+            </script>
+        ";
+        exit; 
+    } else{ // 비밀번호가 일치한다면
+        // 로그인 처리
 
-    };
+    }
 };
 
 
