@@ -1,3 +1,9 @@
+<?php
+//세션시작 
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,6 +11,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        a:hover{
+            background: #ff8800;
+        }
+    </style>
 </head>
 <body>
     <h2>* 인덱스 *</h2>
