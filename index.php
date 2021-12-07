@@ -12,8 +12,8 @@
 
     <!-- 로그인 전 -->
     <p>
-        <a href="">로그인</a>
-        <a href="">회원가입</a>
+        <a href="login/login.php">로그인</a>
+        <a href="members/join.php">회원가입</a>
     </p>
 
     <!-- 로그인 후 -->
