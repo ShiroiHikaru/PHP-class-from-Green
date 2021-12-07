@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$s_idx = $_SESSION["s_idx"];
+
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,49 +39,25 @@
             var mobile = document.getElementById("mobile");
             var agree = document.getElementById("agree");
 
-            if(uname.value == ""){
-                var err_txt = document.querySelector(".err_name");
-                err_txt.textContent = "이름을 입력하세요.";
-                uname.focus();
-                return false;
-            };
-
-            if(uid.value == ""){
-                var err_txt = document.querySelector(".err_id");
-                err_txt.textContent = "아이디를 입력하세요.";
-                uid.focus();
-                return false;
-            };
-            var uid_len = uid.value.length;
-            if( uid_len < 4 || uid_len > 12){
-                var err_txt = document.querySelector(".err_id");
-                err_txt.textContent = "아이디는 4~12글자만 입력할 수 있습니다.";
-                uid.focus();
-                return false;
-            };
-
-            if(pwd.value == ""){
-                var err_txt = document.querySelector(".err_pwd");
-                err_txt.textContent = "비밀번호를 입력하세요.";
-                pwd.focus();
-                return false;
-            };
+            if(pwd.value){
             var pwd_len = pwd.value.length;
             if( pwd_len < 4 || pwd_len > 8){
                 var err_txt = document.querySelector(".err_pwd");
                 err_txt.textContent = "비밀번호는 4~8글자만 입력할 수 있습니다.";
                 pwd.focus();
                 return false;
+                };
             };
 
-            if(pwd.value != repwd.value){
+            if(pwd.value){
                 var err_txt = document.querySelector(".err_repwd");
                 err_txt.textContent = "비밀번호를 확인해 주세요.";
                 repwd.focus();
                 return false;
+                };
             };
 
-            if(!mobile.value){
+            if(mobile.value){
                 var reg_mobile = /^[0-9]+$/g;
                 if(!reg_mobile.test(mobile.value)){
                     var err_txt = document.querySelector(".err_mobile");
@@ -83,12 +65,6 @@
                     mobile.focus();
                     return false;
                 };
-            };
-
-            if(!agree.checked){
-                alert("약관 동의가 필요합니다.");
-                agree.focus();
-                return false;
             };
         };
 
@@ -117,12 +93,12 @@
             <legend>회원가입</legend>
             <p>
                 <span class="txt">이름</span>
-                <?php echo 이름 ?>
+                <?php echo 이름; ?>
             </p>
 
             <p>
                 <span class="txt">아이디</span>
-                <?php echo 아이디 ?>
+                <?php echo 아이디; ?>
             </p>
 
             <p>
@@ -141,27 +117,27 @@
 
             <p>
                 <label for="repwd" class="txt">생년월일</label>
-                <input type="text" name="birth" id="birth" class="birth">
+                <input type="text" name="birth" id="birth" class="birth" value="<?php echo 생년월일; ?>">
                 <br>
                 <span>* ex) 20211022</span>
             </p>
 
             <p>
                 <label for="postalCode" class="txt">주소</label>
-                <input type="text" name="postalCode" id="postalCode" class="postal_code">
+                <input type="text" name="postalCode" id="postalCode" class="postal_code" value="<?php echo 주소; ?>">
                 <button type="button" class="btn" onclick="addr_search()">주소검색</button>
                 <br>
                 <label for="addr1" class="txt">기본주소 </label>
-                <input type="text" name="addr1" id="addr1" class="addr1">
+                <input type="text" name="addr1" id="addr1" class="addr1" value="<?php echo 기본주소; ?>">
                 <br>
                 <label for="addr2" class="txt">상세주소 </label>
-                <input type="text" name="addr2" id="addr2" class="addr2">
+                <input type="text" name="addr2" id="addr2" class="addr2" value="<?php echo 상세주소; ?>">
             </p>
 
             <p>
                 <label for="" class="txt">이메일</label>
-                <input type="text" name="email_id" id="email_id" class="email_id"> @ 
-                <input type="text" name="email_dns" id="email_dns" class="email_dns"> 
+                <input type="text" name="email_id" id="email_id" class="email_id" value="<?php echo 이메일아이디; ?>"> @ 
+                <input type="text" name="email_dns" id="email_dns" class="email_dns" value="<?php echo 이메일도메인; ?>"> 
                 <select name="email_sel" id="email_sel" class="email_sel" onchange="change_email()">
                     <option value="">직접 입력</option>
                     <option value="naver.com">NAVER</option>
@@ -172,15 +148,11 @@
             
             <p>
                 <label for="mobile" class="txt">전화번호</label>
-                <input type="text" name="mobile" id="mobile" class="mobile">
+                <input type="text" name="mobile" id="mobile" class="mobile" value="<?php echo 전화번호; ?>">
                 <br>
                 <span class="err_mobile">"-"없이 숫자만 입력</span>
             </p>
 
-            <p>
-                <input type="checkbox" name="agree" id="agree" value="y">
-                <label for="agree">약관 동의</label>
-            </p>
 
             <p class="btn_wrap">
                 <button type="button" class="btn" onclick="history.back()">이전으로</button>

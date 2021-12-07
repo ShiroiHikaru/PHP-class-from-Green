@@ -44,7 +44,7 @@ session_start();
                 <a href="#">관리자</a>
              <?php }; ?>
              <a href="login/logout.php">로그아웃</a>
-             <a href="">정보수정</a>
+             <a href="members/edit.php">정보수정</a>
          </p>
     <?php };?>
 
