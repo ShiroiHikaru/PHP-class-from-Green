@@ -188,7 +188,7 @@
             </p>
 
             <p class="btn_wrap">
-                <button type="button" class="btn">이전으로</button>
+                <button type="button" class="btn" onclick="history.back()">이전으로</button>
                 <button type="submit" class="btn">회원가입</button>
             </p>
         </fieldset>

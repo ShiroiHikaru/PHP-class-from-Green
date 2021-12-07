@@ -13,7 +13,7 @@
 </style>
 <body>
     <h1>LOG-IN</h1>
-    <form action="login_ok.php" method="post" name="login_ok">
+    <form action="login_ok.php" method="post" name="login_ok" onsubmit="return login_check()">
         <fieldset>
             <legend>로그인하기</legend>
             <p>
@@ -26,16 +26,16 @@
                 <input type="password" name="pwd" id="pwd" class="pwd">
                 <span class="err_pwd"></span>
             </p>
-            <p class="forget">
-                <button type="button" name="join" id="join" class="join">이전으로</button>
-                <button type="submit" name="key" id="key" class="key" onsubmit="return login_check()">로그인</button>
+            <p class="btn_wrap">
+                <button type="button" class="btn" onclick="history.back()">이전으로</button>
+                <button type="submit" class="btn">로그인</button>
             </p>
         </fieldset>
     </form>
 </body>
 
 <script type="text/javascript">
-    function login_check() {
+    function login_check(){
         var uid = document.getElementById("u_id");
         var pwd = document.getElementById("pwd");
 
