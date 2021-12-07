@@ -5,6 +5,7 @@ session_start();
 /* 이전 페이지에서 값 가져오기 */
 $u_id = $_POST["u_id"];
 $pwd = $_POST["pwd"];
+$s_idx = $_POST["idx"];
 // echo "ID : ".$u_id." / PW : ".$pwd;
 
 /* DB 접속 */

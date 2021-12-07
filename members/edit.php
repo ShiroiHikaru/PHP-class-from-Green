@@ -1,7 +1,21 @@
 <?php
 session_start();
 
+
+/* 로그인 사용자 */
 $s_idx = $_SESSION["s_idx"];
+
+/* DB 접속 */
+include "../inc/dbcon.php";
+
+/*쿼리 작성 */
+$sql = "select * from members where idx=$s_idx;";
+
+/* 쿼리 전송 */
+$result = mysqli_query($dbcon, $sql);
+
+/* 결과 가져오기 */
+$array = mysqli_fetch_array($result);
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +24,7 @@ $s_idx = $_SESSION["s_idx"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title>정보수정</title>
     <style type="text/css">
         body,select,option,button{font-size:16px}
         input{border:1px solid #999;font-size:14px;padding:5px 10px}
@@ -29,15 +43,12 @@ $s_idx = $_SESSION["s_idx"];
         .addr2{width:300px;margin-bottom:5px}
     </style>
     <script type="text/javascript">
-        function form_check(){
+        function edit_check()(){
             
             // 객체 생성
-            var uname = document.getElementById("uname");
-            var uid = document.getElementById("uid");
             var pwd = document.getElementById("pwd");
             var repwd = document.getElementById("repwd");
             var mobile = document.getElementById("mobile");
-            var agree = document.getElementById("agree");
 
             if(pwd.value){
             var pwd_len = pwd.value.length;
@@ -90,15 +101,15 @@ $s_idx = $_SESSION["s_idx"];
 <body>
     <form name="edit_form" action="edit_ok.php" method="post" onsubmit="return edit_check()">
         <fieldset>
-            <legend>회원가입</legend>
+            <legend>정보수정</legend>
             <p>
                 <span class="txt">이름</span>
-                <?php echo 이름; ?>
+                <?php echo $array["u_name"]; ?>
             </p>
 
             <p>
                 <span class="txt">아이디</span>
-                <?php echo 아이디; ?>
+                <?php echo $array["u_id"]; ?>
             </p>
 
             <p>
@@ -116,28 +127,36 @@ $s_idx = $_SESSION["s_idx"];
             </p>
 
             <p>
+                <?php
+                    //str_replace("어떤 문자를", "어떤 문자로", "어떤 문장에서");
+                    $birth = str_replace("-", "", $array["birth"]);
+                ?>
                 <label for="repwd" class="txt">생년월일</label>
-                <input type="text" name="birth" id="birth" class="birth" value="<?php echo 생년월일; ?>">
+                <input type="text" name="birth" id="birth" class="birth" value="<?php echo $birth; ?>">
                 <br>
                 <span>* ex) 20211022</span>
             </p>
 
             <p>
                 <label for="postalCode" class="txt">주소</label>
-                <input type="text" name="postalCode" id="postalCode" class="postal_code" value="<?php echo 주소; ?>">
+                <input type="text" name="postalCode" id="postalCode" class="postal_code" value="<?php echo $array["postalcode"]; ?>">
                 <button type="button" class="btn" onclick="addr_search()">주소검색</button>
                 <br>
                 <label for="addr1" class="txt">기본주소 </label>
-                <input type="text" name="addr1" id="addr1" class="addr1" value="<?php echo 기본주소; ?>">
+                <input type="text" name="addr1" id="addr1" class="addr1" value="<?php echo $array["addr1"]; ?>">
                 <br>
                 <label for="addr2" class="txt">상세주소 </label>
-                <input type="text" name="addr2" id="addr2" class="addr2" value="<?php echo 상세주소; ?>">
+                <input type="text" name="addr2" id="addr2" class="addr2" value="<?php echo $array["addr2"]; ?>">
             </p>
 
             <p>
+                <?php
+                    //explode("기준문자", "어떤 문장에서");
+                    $email = explode("@", $array["email"]);
+                ?>
                 <label for="" class="txt">이메일</label>
-                <input type="text" name="email_id" id="email_id" class="email_id" value="<?php echo 이메일아이디; ?>"> @ 
-                <input type="text" name="email_dns" id="email_dns" class="email_dns" value="<?php echo 이메일도메인; ?>"> 
+                <input type="text" name="email_id" id="email_id" class="email_id" value="<?php echo $email[0]; ?>"> @ 
+                <input type="text" name="email_dns" id="email_dns" class="email_dns" value="<?php echo $array[1]; ?>"> 
                 <select name="email_sel" id="email_sel" class="email_sel" onchange="change_email()">
                     <option value="">직접 입력</option>
                     <option value="naver.com">NAVER</option>
@@ -148,7 +167,7 @@ $s_idx = $_SESSION["s_idx"];
             
             <p>
                 <label for="mobile" class="txt">전화번호</label>
-                <input type="text" name="mobile" id="mobile" class="mobile" value="<?php echo 전화번호; ?>">
+                <input type="text" name="mobile" id="mobile" class="mobile" value="<?php echo $array["mobile"]; ?>">
                 <br>
                 <span class="err_mobile">"-"없이 숫자만 입력</span>
             </p>
@@ -156,12 +175,10 @@ $s_idx = $_SESSION["s_idx"];
 
             <p class="btn_wrap">
                 <button type="button" class="btn" onclick="history.back()">이전으로</button>
-                <button type="submit" class="btn">회원가입</button>
+                <button type="submit" class="btn">정보수정</button>
             </p>
         </fieldset>
     </form>
-    <p>
-        <a href="insert.php?u_name=홍길동&u_id=hong">getTest</a>
-    </p>
+ 
 </body>
 </html>
