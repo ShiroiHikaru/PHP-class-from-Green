@@ -15,7 +15,7 @@
     <p>사이트의 모든 서비스를 제공 받으실 수 있습니다.</p>
     <p>
         <a href="../index.php">메인페이지로</a>
-        <a href="#">로그인</a>
+        <a href="../login/login.php">로그인</a>
     </p>
 </body>
 </html>
