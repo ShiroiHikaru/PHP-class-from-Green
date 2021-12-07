@@ -3,6 +3,13 @@
 session_start();
 
 
+//$s_id = isset(조건) ? A : B; 자바스크립트의 삼항연산자 
+    
+    $s_id = isset($_SESSION["s_id"]) ? $_SESSION["s_id"]:""; 
+    $s_name = isset($_SESSION["s_name"]) ? $_SESSION["s_name"]:"";
+    //echo "Session ID : ".$s_id." / Name : ".$s_name;
+
+// DB접속
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,7 +19,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <style>
-        a{
+        a{··
             text-decoration: none;
             color: #000;
         }
@@ -25,18 +32,21 @@ session_start();
     <h2>* 인덱스 *</h2>
     <p>인덱스 문서입니다.</p>
 
-    <!-- 로그인 전 -->
-    <p>
-        <a href="login/login.php">로그인</a>
-        <a href="members/join.php">회원가입</a>
-    </p>
+    <?php if(!$s_id){/* 로그인 전 */ ?>
+        <p>
+          <a href="login/login.php">로그인</a>
+          <a href="members/join.php">회원가입</a>
+        </p>
+    <?php } else{/* 로그인 후 */ ?>
+         <p>
+             <?php if($s_id == "admin"){ ?>
+                <a href="#">관리자</a>
+             <?php }; ?>
+             <a href="">로그아웃</a>
+             <a href="">정보수정</a>
+         </p>
+    <?php };?>
 
-    <!-- 로그인 후 -->
-    <p>
-        <!-- 관리자 로그인 -->
-        <a href="">관리자</a>
-        <a href="">로그아웃</a>
-        <a href="">정보수정</a>
-    </p>    
+    
 </body>
 </html>
