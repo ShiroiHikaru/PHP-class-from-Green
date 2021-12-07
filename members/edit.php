@@ -3,7 +3,8 @@ session_start();
 
 
 /* 로그인 사용자 */
-$s_idx = $_SESSION["s_idx"];
+$s_idx = isset($_SESSION['s_idx'])?
+$_SESSION['s_idx']:0;
 
 /* DB 접속 */
 include "../inc/dbcon.php";
@@ -15,7 +16,7 @@ $sql = "select * from members where idx=$s_idx;";
 $result = mysqli_query($dbcon, $sql);
 
 /* 결과 가져오기 */
-$array = mysqli_fetch_array($result);
+$array = mysqli_fetch_assoc($result);
 
 ?>
 <!DOCTYPE html>
@@ -156,7 +157,7 @@ $array = mysqli_fetch_array($result);
                 ?>
                 <label for="" class="txt">이메일</label>
                 <input type="text" name="email_id" id="email_id" class="email_id" value="<?php echo $email[0]; ?>"> @ 
-                <input type="text" name="email_dns" id="email_dns" class="email_dns" value="<?php echo $array[1]; ?>"> 
+                <input type="text" name="email_dns" id="email_dns" class="email_dns" value="<?php echo $email[1]; ?>"> 
                 <select name="email_sel" id="email_sel" class="email_sel" onchange="change_email()">
                     <option value="">직접 입력</option>
                     <option value="naver.com">NAVER</option>
