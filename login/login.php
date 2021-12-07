@@ -13,7 +13,7 @@
 </style>
 <body>
     <h1>LOG-IN</h1>
-    <form action="" method="get" name="login">
+    <form action="login_ok.php" method="post" name="login_ok">
         <fieldset>
             <legend>로그인하기</legend>
             <p>
@@ -24,24 +24,48 @@
             <p>
                 <label for="pwd">비밀번호</label>
                 <input type="password" name="pwd" id="pwd" class="pwd">
+                <span class="err_pwd"></span>
             </p>
             <p class="forget">
                 <button type="button" name="join" id="join" class="join">이전으로</button>
-                <button type="button" name="key" id="key" class="key" onsubmit="return login_check()">로그인</button>
+                <button type="submit" name="key" id="key" class="key" onsubmit="return login_check()">로그인</button>
             </p>
         </fieldset>
     </form>
 </body>
 
 <script type="text/javascript">
-    function login() {
-        var uid = document.getElementById("u_id")
+    function login_check() {
+        var uid = document.getElementById("u_id");
+        var pwd = document.getElementById("pwd");
+
         if(uid.value == ""){
                 var err_txt = document.querySelector(".err_id");
                 err_txt.textContent = "아이디를 입력하세요.";
                 uid.focus();
                 return false;
-        };
-    }
+            };
+            var uid_len = uid.value.length;
+            if( uid_len < 4 || uid_len > 12){
+                var err_txt = document.querySelector(".err_id");
+                err_txt.textContent = "아이디는 4~12글자만 입력할 수 있습니다.";
+                uid.focus();
+                return false;
+            };
+
+            if(pwd.value == ""){
+                var err_txt = document.querySelector(".err_pwd");
+                err_txt.textContent = "비밀번호를 입력하세요.";
+                pwd.focus();
+                return false;
+            };
+            var pwd_len = pwd.value.length;
+            if( pwd_len < 4 || pwd_len > 8){
+                var err_txt = document.querySelector(".err_pwd");
+                err_txt.textContent = "비밀번호는 4~8글자만 입력할 수 있습니다.";
+                pwd.focus();
+                return false;
+            };
+    };
 </script>
 </html>
