@@ -38,11 +38,12 @@ session_start();
           <a href="members/join.php">회원가입</a>
         </p>
     <?php } else{/* 로그인 후 */ ?>
+        <p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
          <p>
              <?php if($s_id == "admin"){ ?>
                 <a href="#">관리자</a>
              <?php }; ?>
-             <a href="">로그아웃</a>
+             <a href="login/logout.php">로그아웃</a>
              <a href="">정보수정</a>
          </p>
     <?php };?>
