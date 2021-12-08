@@ -2,7 +2,6 @@
 //세션시작 
 session_start();
 
-
 //$s_id = isset(조건) ? A : B; 자바스크립트의 삼항연산자 
     
     $s_id = isset($_SESSION["s_id"]) ? $_SESSION["s_id"]:""; 
@@ -43,7 +42,7 @@ session_start();
              <?php if($s_id == "admin"){ ?>
                 <a href="/website/admin/admin.php">관리자</a>
              <?php }; ?>
-             <a href="login/log_out.php">로그아웃</a>
+             <a href="login/logout.php">로그아웃</a>
              <a href="members/edit.php">정보수정</a>
          </p>
     <?php };?>
