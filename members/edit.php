@@ -98,6 +98,13 @@ $array = mysqli_fetch_array($result);
         function addr_search(){
             window.open("search_addr.php", "", "width=600, height=400, left=0, top=0");
         };
+
+        function del_check(){
+            var i = confirm("정말 탈퇴하시겠습니까?\n탈퇴한 아이디는 사용하실 수 없습니다.")
+            if(i == true){
+                location.herf = "delete.php";
+            };
+        };
     </script>
 </head>
 <body>
@@ -179,6 +186,7 @@ $array = mysqli_fetch_array($result);
                 <button type="button" class="btn" onclick="history.back()">이전으로</button>
                 <button type="button" class="btn" onclick="location.herf='../index.php'">홈으로</button>
                 <button type="submit" class="btn">정보수정</button>
+                <button type="button" class="btn" onclick="del_check()">회원탈퇴</button>
             </p>
         </fieldset>
     </form>
