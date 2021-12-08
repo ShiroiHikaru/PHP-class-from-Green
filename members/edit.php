@@ -16,7 +16,7 @@ $sql = "select * from members where idx=$s_idx;";
 $result = mysqli_query($dbcon, $sql);
 
 /* 결과 가져오기 */
-$array = mysqli_fetch_assoc($result);
+$array = mysqli_fetch_array($result);
 
 ?>
 <!DOCTYPE html>
