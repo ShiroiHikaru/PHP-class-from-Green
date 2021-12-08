@@ -7,8 +7,17 @@ session_start();
     
     $s_id = isset($_SESSION["s_id"]) ? $_SESSION["s_id"]:""; 
     $s_name = isset($_SESSION["s_name"]) ? $_SESSION["s_name"]:"";
-    //echo "Session ID : ".$s_id." / Name : ".$s_name;
+    
 
+    /*관리자가 아닌 경우 index문서로 이동*/
+    if(!$s_id || ($s_id != "admin")){
+        echo "
+        <script type=\"text/javascript\">
+            alert(\"관리자 로그인이 필요합니다.\");
+            location.href = \"../index.php\";
+        </script>
+        ";
+    };
 // DB접속
 ?>
 <!DOCTYPE html>
@@ -29,25 +38,16 @@ session_start();
     </style>
 </head>
 <body>
-    <h2>* 인덱스 *</h2>
-    <p>인덱스 문서입니다.</p>
-
-    <?php if(!$s_id){/* 로그인 전 */ ?>
-        <p>
-          <a href="login/login.php">로그인</a>
-          <a href="members/join.php">회원가입</a>
-        </p>
-    <?php } else{/* 로그인 후 */ ?>
+    <h2>* 관리자 페이지 *</h2>
         <p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
          <p>
-             <?php if($s_id == "admin"){ ?>
-                <a href="/website/admin/admin.php">관리자</a>
-             <?php }; ?>
-             <a href="login/logout.php">로그아웃</a>
-             <a href="members/edit.php">정보수정</a>
+            <a href="#website/admin/admin.php" class="bar">홈으로</a>
+            <!-- <a href="board/board_list.php">게시판 관리</a> -->
+            <a href="#none" class="bar">게시판 관리
+            <a href="members/list.php" class="bar">회원관리</a>
+            <a href="../login/logout.php">로그아웃</a>
          </p>
-    <?php };?>
-
+    <hr>
     
 </body>
 </html>
