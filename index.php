@@ -43,7 +43,7 @@ session_start();
              <?php if($s_id == "admin"){ ?>
                 <a href="/website/admin/admin.php">관리자</a>
              <?php }; ?>
-             <a href="login/logout.php">로그아웃</a>
+             <a href="login/log_out.php">로그아웃</a>
              <a href="members/edit.php">정보수정</a>
          </p>
     <?php };?>

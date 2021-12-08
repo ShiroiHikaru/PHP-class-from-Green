@@ -28,7 +28,7 @@ $num = mysqli_num_rows($result);
     <title>정보수정</title>
     <style type="text/css">
         body{font-size:16px}
-       
+       table tr td{border: 1px solid #000; text-align: center;}
     </style>
     <script type="text/javascript">
         
@@ -42,7 +42,7 @@ $num = mysqli_num_rows($result);
             <!-- <a href="board/board_list.php">게시판 관리</a> -->
             <a href="#none" class="bar">게시판 관리
             <a href="members/list.php" class="bar">회원관리</a>
-            <a href="../login/logout.php">로그아웃</a>
+            <a href="../login/log_out.php">로그아웃</a>
          </p>
     <hr>
 
@@ -53,6 +53,7 @@ $num = mysqli_num_rows($result);
             <td>이름</td>
             <td>아이디</td>
             <td>생년월일</td>
+            <td>우편번호</td>
             <td>주소</td>
             <td>이메일</td>
             <td>전화번호</td>
@@ -69,7 +70,8 @@ $num = mysqli_num_rows($result);
             <td><?php echo $array["u_name"]; ?></td>
             <td><?php echo $array["u_id"]; ?></td>
             <td><?php echo $array["birth"]; ?></td>
-            <td><?php echo $array["postalCode"]." ".$array["addr1"]." ".$array["addr2"]; ?></td>
+            <td><?php echo $array["postalCode"]?></td>
+            <td><?php echo $array["addr1"].$array["addr2"]; ?></td>
             <td><?php echo $array["email"]; ?></td>
             <td><?php echo $array["mobile"]; ?></td>
             <td><?php echo $array["reg_date"]; ?></td>
