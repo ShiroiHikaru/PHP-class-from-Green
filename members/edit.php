@@ -45,7 +45,7 @@ $array = mysqli_fetch_array($result);
         .addr2{width:300px;margin-bottom:5px}
     </style>
     <script type="text/javascript">
-        function edit_check()(){
+        function edit_check(){
             
             // 객체 생성
             var pwd = document.getElementById("pwd");
@@ -105,12 +105,12 @@ $array = mysqli_fetch_array($result);
         <fieldset>
             <legend>정보수정</legend>
             <p>
-                <span class="txt">이름</span>
+                <p class="txt">이름</span>
                 <?php echo $array["u_name"]; ?>
             </p>
 
             <p>
-                <span class="txt">아이디</span>
+                <p class="txt">아이디</span>
                 <?php echo $array["u_id"]; ?>
             </p>
 
