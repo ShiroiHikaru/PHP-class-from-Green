@@ -1,12 +1,6 @@
 <?php
-error_reporting(0);
-session_start();
-
-$s_idx = isset($_SESSION['s_idx'])?
-$_SESSION['s_idx']:0;
-
-
 /* 이전 페이지에서 값 가져오기 */
+$u_idx = $_POST["u_idx"];
 $pwd = $_POST["pwd"];
 $birth = $_POST["birth"];
 $postalCode = $_POST["postalCode"];
@@ -35,10 +29,10 @@ include "../inc/dbcon.php";
 //update members set 필드명 = 값, 필드명 = 값, ...
 if(!$pwd){
     $sql = "update members set birth='$birth', postalCode='$postalCode', addr1='$addr1', addr2='$addr2', email='$email', mobile='$mobile' 
-    where idx=$s_idx;";
+    where idx=$u_idx;";
 } else{
     $sql ="update members set pwd='$pwd', birth='$birth', postalCode='$postalCode', addr1='$addr1', addr2='$addr2', email='$email', mobile='$mobile'
-    where idx=$s_idx;";
+    where idx=$u_idx;";
 };
 echo $sql;
 

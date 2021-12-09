@@ -119,12 +119,12 @@ mysqli_close($dbcon);
 
 
 /* 리디렉션 */
-echo "
-    <script type=\"text/javascript\">
-        // location.href = 'welcome.php';
-        location.href = \"welcome.php\";
-    </script>
-";
+//  echo "
+//      <script type=\"text/javascript\">
+//          // location.href = 'welcome.php';
+//          location.href = \"welcome.php\";
+//      </script>
+//  ";
 ?>
 
 <!-- <script type="text/javascript">

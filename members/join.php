@@ -27,7 +27,7 @@
             
             // 객체 생성
             var uname = document.getElementById("uname");
-            var uid = document.getElementById("uid");
+            var u_id = document.getElementById("u_id");
             var pwd = document.getElementById("pwd");
             var repwd = document.getElementById("repwd");
             var mobile = document.getElementById("mobile");
@@ -40,7 +40,7 @@
                 return false;
             };
 
-            if(uid.value == ""){
+            if(u_id.value == ""){
                 var err_txt = document.querySelector(".err_id");
                 err_txt.textContent = "아이디를 입력하세요.";
                 uid.focus();
@@ -123,7 +123,7 @@
             </p>
 
             <p>
-                <label for="uid" class="txt">아이디</label>
+                <label for="u_id" class="txt">아이디</label>
                 <input type="text" name="u_id" id="u_id" class="u_id" disabled>
                 <button type="button" class="btn" onclick="id_search()">아이디 중복확인</button>
                 <br>

@@ -76,6 +76,7 @@ $array = mysqli_fetch_array($result);
                     return false;
                 };
             };
+
         };
 
         function change_email(){
@@ -108,6 +109,7 @@ $array = mysqli_fetch_array($result);
     <form name="edit_form" action="edit_ok.php" method="get" onsubmit="return edit_check()">
         <fieldset>
             <legend>정보수정</legend>
+            <input type="hidden" name="u_idx" value="<?php echo $u_idx; ?>">
             <p>
                 <p class="txt">이름</span>
                 <?php echo $array["u_name"]; ?>
