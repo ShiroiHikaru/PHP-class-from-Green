@@ -79,12 +79,6 @@ $array = mysqli_fetch_array($result);
                     return false;
                 };
             };
-
-            function del_check(){
-            var i = confirm("정말 탈퇴하시겠습니까?\n탈퇴한 아이디는 사용하실 수 없습니다.")
-            if(i == true){
-                location.herf = "delete.php";
-            };
         };
 
         function change_email(){
@@ -103,6 +97,17 @@ $array = mysqli_fetch_array($result);
 
         function addr_search(){
             window.open("search_addr.php", "", "width=600, height=400, left=0, top=0");
+        };
+
+        function del_check(){
+            // var i = confirm("정말 탈퇴하시겠습니까?\n탈퇴한 아이디는 사용하실 수 없습니다.")
+            // if(i == true){
+            //     location.herf = "delete.php";
+
+            var i = confirm("정말 탈퇴하시겠습니까?\n탈퇴한 아이디는 사용하실 수 없습니다.");
+            if(i==true){
+                location.herf = "delete.php";
+            };
         };
 
         };

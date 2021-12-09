@@ -1,17 +1,14 @@
 <?php
-error_reporting(0);
-session_start();
-
-
-/* 로그인 사용자 */
-$s_idx = isset($_SESSION['s_idx'])?
-$_SESSION['s_idx']:0;
+include "../inc/admin_ss.php";
 
 /* DB 접속 */
-include "../inc/dbcon.php";
+include "../../inc/dbcon.php";
+
+
+$s_idx = $_GET["u_idx"];
 
 /*쿼리 작성 */
-$sql = "select * from members where idx=$s_idx;";
+$sql = "select * from members where idx=$u_idx;";
 
 /* 쿼리 전송 */
 $result = mysqli_query($dbcon, $sql);
@@ -100,15 +97,15 @@ $array = mysqli_fetch_array($result);
         };
 
         function del_check(){
-            var i = confirm("정말 탈퇴하시겠습니까?\n탈퇴한 아이디는 사용하실 수 없습니다.")
+            var i = confirm("정말 삭제하시겠습니까?\n삭제한 아이디는 복원하실 수 없습니다.")
             if(i == true){
-                location.herf = "delete.php";
+                location.herf = "delete.php?u_idx=<?php echo $u_idx; ?>";
             };
         };
     </script>
 </head>
 <body>
-    <form name="edit_form" action="edit_ok.php" method="post" onsubmit="return edit_check()">
+    <form name="edit_form" action="edit_ok.php" method="get" onsubmit="return edit_check()">
         <fieldset>
             <legend>정보수정</legend>
             <p>
@@ -186,7 +183,7 @@ $array = mysqli_fetch_array($result);
                 <button type="button" class="btn" onclick="history.back()">이전으로</button>
                 <button type="button" class="btn" onclick="location.herf='../index.php'">홈으로</button>
                 <button type="submit" class="btn">정보수정</button>
-                <button type="button" class="btn" onclick="del_check()">회원탈퇴</button>
+                <button type="button" class="btn" onclick="del_check()">회원삭제</button>
             </p>
         </fieldset>
     </form>

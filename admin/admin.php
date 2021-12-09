@@ -41,7 +41,7 @@ session_start();
     <h2>* 관리자 페이지 *</h2>
         <p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
          <p>
-            <a href="#website/admin/admin.php" class="bar">홈으로</a>
+            <a href="../index.php" class="bar">홈으로</a>
             <!-- <a href="board/board_list.php">게시판 관리</a> -->
             <a href="#none" class="bar">게시판 관리
             <a href="members/list.php" class="bar">회원관리</a>
