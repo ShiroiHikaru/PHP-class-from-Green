@@ -164,7 +164,7 @@ if($EpageNum > $totalPG){
           /* paging : 이전 페이지 */
         if($page <= 1){
          ?>
-         <a href="list.php?page=1">이전</a>
+         이전
          <?php  } else{ ?>
          <a href="list.php?page=<?php echo($page-1); ?>">이전</a>
         <?php }; ?>   
@@ -182,7 +182,7 @@ if($EpageNum > $totalPG){
         /* 다음 페이지 */
         if($page >= $totalPG){
         ?>
-        <a href="list.php?page=<?php echo $totalPG; ?>">다음</a>    
+        다음    
         <?php } else{ ?>
             <a href="list.php?page=<?php echo ($page+1); ?>">다음</a>
         <?php };?>

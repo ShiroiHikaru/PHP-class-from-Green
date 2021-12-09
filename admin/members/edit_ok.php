@@ -49,7 +49,7 @@ mysqli_close($dbcon);
  echo "
      <script type=\"text/javascript\">
          alert(\"정보가 수정되었습니다.\");
-         location.href = \"edit.php\";
+         location.href = \"edit.php?u_idx=$u_idx\";
      </script>
  ";
  
