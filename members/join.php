@@ -26,7 +26,7 @@
         function form_check(){
             
             // 객체 생성
-            var uname = document.getElementById("uname");
+            var uname = document.getElementById("u_name");
             var u_id = document.getElementById("u_id");
             var pwd = document.getElementById("pwd");
             var repwd = document.getElementById("repwd");
